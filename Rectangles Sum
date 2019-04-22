@@ -1,0 +1,30 @@
+import matplotlib.pyplot as plt
+
+
+lower = float(input("Lower bound: "))
+upper = float(input("Upper bound: "))
+dx = float(input("delta x: "))
+
+def f(x):                                   #function is hardcoded, working on evaluating user input
+  return x**3 - 10
+
+N = int((upper-lower)/dx)                   #Number of rectangles
+SUM = 0.0                                   #Sum of Rectangles area
+x = lower
+xList = []                                  #x-values to plot
+yList = []                                  #y-values to plot
+
+
+for i in range(N):
+  xList.append(x)
+  y = f(x)
+  yList.append(y)
+  area = dx * y
+  SUM += area
+  x += dx
+
+plt.plot(xList, yList)                       #plot f(x)
+plt.fill_between(xList, yList)
+plt.title(('Function x^3 - 10'))
+plt.show()
+print('Area: ', SUM)                         #integral approximation by sum
